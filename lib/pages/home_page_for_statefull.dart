@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_lesson/main.dart';
+import 'package:riverpod_lesson/statenotifier/notifer_page.dart';
 
 class MyHome extends StatefulHookConsumerWidget {
   const MyHome({super.key});
@@ -43,13 +44,24 @@ class _MyHomeState extends ConsumerState<MyHome> {
                   size: 30,
                 )),
             IconButton(
+              onPressed: () {
+                name.value--;
+              },
+              icon: const Icon(
+                Icons.remove,
+                size: 30,
+              ),
+            ),
+            IconButton(
                 onPressed: () {
-                  name.value--;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>const  DemoPage(),
+                    ),
+                  );
                 },
-                icon: const Icon(
-                  Icons.remove,
-                  size: 30,
-                ))
+                icon: const Icon(Icons.arrow_forward_ios))
           ],
         ),
       ),

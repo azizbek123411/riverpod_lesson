@@ -14,31 +14,38 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(counterProvider);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text(
-            'Riverpod',
-            style: TextStyle(color: Colors.white),
-          ),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text(
+          'Riverpod',
+          style: TextStyle(color: Colors.white),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(name.toString(),style:const  TextStyle(fontSize: 30),),
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MyHome(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.arrow_forward_ios,size: 30,))
-            ],
-          ),
-        ));
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              name.toString(),
+              style: const TextStyle(fontSize: 30),
+            ),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyHome(),
+                    ),
+                  );
+                },
+                icon: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 30,
+                ))
+          ],
+        ),
+      ),
+    );
   }
 }

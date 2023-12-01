@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+
+import 'package:riverpod_lesson/statenotifier/counter_demo.dart';
 import 'package:riverpod_lesson/pages/home_page_fort_stateless.dart';
+
+import 'family_modifier_multiple/user.dart';
 
 // final nameProvider=Provider<String>((ref){
 //   return "Levi's";
 // });  ===>>>  Name provider
-
-final counterProvider= StateProvider<double>((ref){
+final countProvider = StateNotifierProvider((ref2) => CounterDemo());
+final counterProvider = StateProvider<double>((ref) {
   return 0;
+});
+
+/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+final streamProvider = StreamProvider<int>((ref) {
+  return Stream.periodic(
+    const Duration(seconds: 2),
+    ((computationCount) => 2),
+  );
+});
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+final nameProvider=Provider.family<String,String>((ref,name){
+  return "Hello $name";
 });
 
 void main() {
@@ -15,6 +37,12 @@ void main() {
     const ProviderScope(child: MyApp()),
   );
 }
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+final nmeProvider=Provider.family<String,User>((ref,user){
+  return " Name is ${user.name} and adress is ${user.address}";
+});
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,12 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
+      home: const FamilyMultipleHome(),
       routes: {
         HomePage.id: (context) => const HomePage(),
       },
