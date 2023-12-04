@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_lesson/nprovider_with_generator/home.dart';
 
 
 import 'package:riverpod_lesson/statenotifier/counter_demo.dart';
 
 import 'family_modifier_multiple/user.dart';
-import 'notifier_notifierprovider/home.dart';
 
 // final nameProvider=Provider<String>((ref){
 //   return "Levi's";
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHome(),
+      home: MyHomee(),
     );
   }
 }
