@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 import 'package:riverpod_lesson/statenotifier/counter_demo.dart';
-import 'package:riverpod_lesson/pages/home_page_fort_stateless.dart';
 
 import 'family_modifier_multiple/user.dart';
+import 'notifier_notifierprovider/home.dart';
 
 // final nameProvider=Provider<String>((ref){
 //   return "Levi's";
@@ -50,12 +50,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const FamilyMultipleHome(),
-      routes: {
-        HomePage.id: (context) => const HomePage(),
-      },
+      home: MyHome(),
     );
   }
 }
